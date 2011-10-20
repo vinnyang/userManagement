@@ -3,21 +3,21 @@
 Create a simple system for managing users and their roles. A user can have zero to many roles and a role can have many users. Only users that are in the ‘admin’ role can login to this application.
 
 The user will login using a username/password. When logging into the application the user will see a grid that contains all of the users. The grid will have the following columns
-		User ID
-		Username
-		Email Address
-		First Name
-		Last Name
-		Roles (represented as comma-delimited list)
+	User ID
+	Username
+	Email Address
+	First Name
+	Last Name
+	Roles (represented as comma-delimited list)
 	
 The grid should have the following functionality:
-		1. Support pagination
-		2. Support sorting on the User ID, Username, Email Address, First Name, and Last Name columns
-		3. Support filtering by Username, Email Address, First Name, and Last Name, and Role
-		4. Support inline editing of the Username, Email Address, First Name, and Last Name
-		5. Support creating new users directly into the grid. Role association does not have to be in the grid
-		6. Support deleting user from the system 
-		7. The grid should be completely controlled by javascript. You can use one of the many jquery plugins for grids like jqgrid, slickgrid, etc
+	1. Support pagination
+	2. Support sorting on the User ID, Username, Email Address, First Name, and Last Name columns
+	3. Support filtering by Username, Email Address, First Name, and Last Name, and Role
+	4. Support inline editing of the Username, Email Address, First Name, and Last Name
+	5. Support creating new users directly into the grid. Role association does not have to be in the grid
+	6. Support deleting user from the system 
+	7. The grid should be completely controlled by javascript. You can use one of the many jquery plugins for grids like jqgrid, slickgrid, etc
 
 The admin user should be able to get to the Add/Edit user page through the grid. The Add/Edit user page will support editing the Username, First Name, Last Name, Email Address and role association. A user can also be deleted through this page.
 
