@@ -1,7 +1,7 @@
 -created a new project
 -created a scaffold User
 -created a Role model
--create a github repo
+-created a github repo
 -set up the relationship between User & Role
 -db:migrate
 -get rspec running
