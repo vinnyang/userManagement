@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-  has_many :roles
+  belongs_to :role
 end
