@@ -32,7 +32,7 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'jquery-rails'
   gem "ZenTest", "4.4.2"
