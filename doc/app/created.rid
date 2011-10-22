@@ -1,0 +1,8 @@
+Sat, 22 Oct 2011 01:55:19 -0400
+doc/README_FOR_APP	Thu, 20 Oct 2011 02:30:34 -0400
+app/controllers/application_controller.rb	Thu, 20 Oct 2011 02:30:34 -0400
+app/controllers/users_controller.rb	Fri, 21 Oct 2011 01:47:00 -0400
+app/helpers/application_helper.rb	Thu, 20 Oct 2011 02:30:34 -0400
+app/helpers/users_helper.rb	Thu, 20 Oct 2011 02:34:39 -0400
+app/models/role.rb	Thu, 20 Oct 2011 18:49:24 -0400
+app/models/user.rb	Sat, 22 Oct 2011 01:49:13 -0400

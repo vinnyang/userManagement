@@ -37,9 +37,11 @@ group :test do
   gem 'jquery-rails'
   gem "ZenTest", "4.4.2"
   gem "autotest-rails", "4.1.0"
+
 end
 
 group :development do
+  gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
   gem 'rspec-rails'
   gem "ZenTest", "4.4.2"
   gem "autotest-rails", "4.1.0"
