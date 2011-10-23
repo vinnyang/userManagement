@@ -1,6 +1,7 @@
 UserManagement::Application.routes.draw do
   resources :users
-
+  root :to => 'users#index' # change to sign in page later
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -21,14 +21,18 @@
   </div>
   <div class="field">
     <%= f.label :Password %><br />
-    <%= f.text_field :Password %>
+    <%= f.password_field :Password %>
+  </div>
+  <div>
+	<%= f.label :Password_confirmation, "Please type your password again" %><br />
+	<%= f.password_field :Passsword_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :fname %><br />
+    <%= f.label :fname, "First Name" %><br />
     <%= f.text_field :fname %>
   </div>
   <div class="field">
-    <%= f.label :lname %><br />
+    <%= f.label :lname, "Last Name" %><br />
     <%= f.text_field :lname %>
   </div>
   <div class="actions">

@@ -1,8 +1,4 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :roles
-  attr_accessible :username, :email, :fname, :lname 
-
-
 # == Schema Information
 #
 # Table name: users
@@ -16,5 +12,13 @@ class User < ActiveRecord::Base
 #  updated_at :datetime
 #  Password   :string(255)
 #
+  has_and_belongs_to_many :roles
+  attr_accessible :username, :email, :fname, :lname
+  
+  validates :password, :presence => true,
+                       :confirmation => true,
+                       :length => {:within => 6..30}
+
+
 
 end
