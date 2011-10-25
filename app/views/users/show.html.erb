@@ -11,14 +11,17 @@
 </p>
 
 <p>
-  <b>Fname:</b>
+  <b>First name:</b>
   <%= @user.fname %>
 </p>
 
 <p>
-  <b>Lname:</b>
+  <b>Last name:</b>
   <%= @user.lname %>
 </p>
-
+<p>
+	<b>Roles:</b><br />
+	<%= @user.roles.collect { |role| role.title }.join('<br />').html_safe %>
+</p>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

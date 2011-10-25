@@ -13,11 +13,11 @@ class User < ActiveRecord::Base
 #  Password   :string(255)
 #
   has_and_belongs_to_many :roles
-  attr_accessible :username, :email, :fname, :lname
+  attr_accessible :username, :email, :fname, :lname, :password, :password_confirmation
   
   validates :password, :presence => true,
                        :confirmation => true,
-                       :length => {:within => 6..30}
+                       :length => {:within => 4..30}
 
 
 
