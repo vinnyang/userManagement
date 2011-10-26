@@ -6,5 +6,5 @@ Factory.define :user do |u|
   u.fname 'vince'
   u.lname 'yung'
   u.password 'secrete'
-  u.roles 'admin'
+  u.password_confirmation 'secrete'
 end
