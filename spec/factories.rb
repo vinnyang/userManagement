@@ -1,10 +1,12 @@
 require 'factory_girl'
 
 Factory.define :user do |u|
-  u.username 'vic123'
-  u.email 'vince@test.com'
-  u.fname 'vince'
-  u.lname 'yung'
-  u.password 'secrete'
-  u.password_confirmation 'secrete'
+  u.username 'admin'
+  u.email 'admin@test.com'
+  u.fname 'admin'
+  u.lname 'admin' 
+    # u.password 'adminpw'
+    # u.password_confirmation 'adminpw'
+  # u.encrypted_password 'adminpw'
+  # u.encrypted_password_confirmation 'adminpw'
 end
