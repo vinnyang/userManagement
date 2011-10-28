@@ -30,7 +30,8 @@ class User < ActiveRecord::Base
 
   validates :password, :presence => true,
                        :confirmation => true,
-                       :length => {:within => 4..50}
+                       :length => {:within => 4..50},
+                       :on => :create
                        
   validates :email, :presence => true,
                     :uniqueness => { :case_sensitive => false},
@@ -54,7 +55,7 @@ class User < ActiveRecord::Base
   private
   
   def encrypt_password 
-    self.salt = create_salt if new_record?
+    self.salt = pw_salt if new_record?
     self.encrypted_password = encrypt(self.password)
   end
   
@@ -62,7 +63,7 @@ class User < ActiveRecord::Base
     secure_hash("#{salt}--#{string}")
   end
   
-  def create_salt 
+  def pw_salt 
     secure_hash("#{Time.now.utc}--#{password}")
   end
   

@@ -51,7 +51,7 @@ describe "User" do
         
         it "should not take duplicated email" do
           User.create!(@user)
-          User.new.(@user.merge(:email => @user[:email].upcase)).
+          User.new(@user.merge(:email => @user[:email].upcase)).
             should_not be_valid
         end
    end
@@ -79,11 +79,11 @@ describe "User" do
       
    describe "has_password" do
      it "should be true if the passwords match" do 
-       @user.has_password?(@user[:password]).
+       User.create!(@user).has_password?(@user[:password]).
         should be_true
      end
      it "should be false if the passwords don't match" do 
-       @user.has_password?(@user[:password].reverse).
+       User.create!(@user).has_password?(@user[:password].reverse).
         should be_false
      end
    end
@@ -114,27 +114,34 @@ describe "User" do
    end
       
    describe "paths" do 
-
+   
        it "should have a path for the 'Index' action" do
          # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
          get users_path
          response.status.should be(200)
        end
-
-       it "should be the correct path for 'New' action" do
+   
+       it "should have the correct path for 'New' action" do
          get new_user_path
          response.should be_success
        end
-
-       it "should be the correct path for 'Edit' action" # do
-       #       get edit_user_path
-       #       response.should be_success
-       #     end
-
-       it "should be the correct path for 'Show' action" # do
-       #       get user_path
-       #       response.should be_success
-       #     end
+   
+       it "should have the correct path for 'Edit' action" do
+         u = User.create!(@user)
+         get edit_user_path(u)
+         response.should be_success
+       end
+   
+       it "should have the correct path for 'Show' action" do
+         u = User.create!(@user)
+         get user_path(u)
+         response.should be_success
+       end
+       
+       it "should have the correct path for root" do
+         get root_path
+         response.should be_success
+       end
     end
 end
 # end

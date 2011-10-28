@@ -1,5 +1,7 @@
 UserManagement::Application.routes.draw do
-  resources :users
+  resources :users do 
+    post 'table_update' => 'users#update' #useing the update action for modifying the table content
+  end
   root :to => 'users#index' # change to sign in page later
   
   # The priority is based upon order of creation:
