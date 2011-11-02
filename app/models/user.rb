@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,
                        :confirmation => true,
                        :length => {:within => 4..50},
-                       :on => :create
+                       :on => :create #solved the "password too short" error while updating
                        
   validates :email, :presence => true,
                     :uniqueness => { :case_sensitive => false},

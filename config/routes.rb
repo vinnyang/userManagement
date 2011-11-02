@@ -1,9 +1,14 @@
 UserManagement::Application.routes.draw do
-  resources :users do 
-    post 'table_update' => 'users#update' #useing the update action for modifying the table content
-  end
   root :to => 'users#index' # change to sign in page later
+  resources :users do 
+    post 'table_update' => 'users#update' #using the update action for modifying the table content
+  end
+  resources :sessions, :only => [:new, :create, :destroy]  
   
+  match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
