@@ -2,6 +2,16 @@ require 'spec_helper'
 
 describe SessionsController do
   render_views
+  before(:each) do 
+     @user = { username:'newuser',
+               email:'new@user.com',
+               fname:'new',
+               lname:'user',
+               password:'userpw',
+               password_confirmation:'userpw'}
+         
+     @createdUser = User.create!(@user)
+   end
   describe "GET 'new'" do
     it "returns http success" do
       get 'new'
@@ -9,15 +19,12 @@ describe SessionsController do
     end
   end
 
-  describe "GET 'create'" do
+  describe "POST 'create'" do
     it "returns http success" do
-      get 'create'
+      @attr ={:session=>{ :email=> @createdUser.email, :password=> @createdUser.password} }
+      post 'create', @attr
       response.should be_success
     end
-  end
-
-  describe "POST 'create'" do
-    
   end
 
   describe "GET 'destroy'" do
@@ -30,7 +37,7 @@ describe SessionsController do
   describe "signin failure" do
 
         before(:each) do
-          @signin = { :email => "email@failure.com", :password => "invalid" }
+          @signin = { :email => "email@fail.com", :password => "invalid" }
         end
 
         it "should re-render the new page" do
@@ -46,15 +53,14 @@ describe SessionsController do
 
   describe "valid signin" do
       before(:each) do 
-        @user = Factory(:user) 
-        @attr = { :email => @user.email, :password => @user.password }
+        @attr = { :email => @createdUser.email, :password => @createdUser.password }
       end
     it "should sign the user in" do 
         post :create, :session => @attr # fill in with tests for a signed-in user.
     end
     it "should redirect to the user show page" do 
       post :create, :session => @attr 
-      response.should redirect_to(user_path(@user))
+      response.should redirect_to(user_path(@createdUser))
     end
   end
 end

@@ -1,6 +1,6 @@
 <h1>Sign in</h1>
 <%= form_for(:session, :url => sessions_path) do |f| %> 
-<p class="warning">**CAUTION: YOU CAN ONLY SIGN-IN HERE IF YOU ARE AN ADMIN USER!!**</p>
+<p class="warning">**CAUTION: FOR ADMINS ONLY!!**</p>
 <div class="field">
 	<%= f.label :email %><br />
 	<%= f.text_field :email %> 
