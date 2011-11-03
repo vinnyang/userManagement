@@ -3,21 +3,22 @@ require 'spec_helper'
 describe "User" do
   
    before(:each) do 
-       @invalidUser = { username:"", 
-                        email:"", 
-                        password:"", 
-                        password_confirmation:"", 
-                        fname:"", 
-                        lname:""}
+      @invalidUser = { username:"", 
+                       email:"", 
+                       password:"", 
+                       password_confirmation:"", 
+                       fname:"", 
+                       lname:""}
 
-      @user = { username:'adminuser',
-                email:'admin@user.com',
-                fname:'admin',
+      @user = { username:'newuser',
+                email:'new@user.com',
+                fname:'new',
                 lname:'user',
-                password:'adminpw',
-                password_confirmation:'adminpw'}
-                
+                password:'userpw',
+                password_confirmation:'userpw'}
+          
       @createdUser = User.create!(@user)
+    #@adminUser = 
     end
   
    describe "attributes" do
@@ -142,25 +143,41 @@ describe "User" do
    end
   
   
-   describe "authenticate method" do
-   it "should return nil on email/password mismatch" do 
-     wrong_pass_user = User.authenticate(@user[:email], "wrongpass")
-     wrong_pass_user.should be_nil
-   end
-   it "should return nil for an email address with no user" do 
-     nonexistent_user = User.authenticate("random@email.com", @user[:password]) 
-     nonexistent_user.should be_nil
-   end
-   it "should return the user on email/password match" do 
-     matching_user = User.authenticate(@user[:email], @user[:password]) 
-     matching_user.should == @user
-   end end
+   describe "authentication" do
+     it "should return nil on email/password mismatch" do 
+       User.authenticate(@user[:email], "wrongpass").
+       should be_nil
+     end
+     
+     it "should return nil for an email address of non-existing user" do 
+       User.authenticate("random@email.com", @user[:password]). 
+       should be_nil
+     end
+     
+     it "should return the right user on email/password match" do 
+       User.authenticate(@user[:email], @user[:password]).
+       should eq(@createdUser)
+     end 
+  end
   
-  
-   
      
    describe "paths" do 
-   
+       
+       it "should have a signin path" do
+         get '/signin'
+         response.should be_success
+       end
+       
+       it "should have a signout path" do
+         get signout_path
+         response.should be_success
+       end
+       
+       it "should have a signup path" do
+         get signup_path
+         response.should be_success
+       end
+       
        it "should have a path for the 'Index' action" do
          # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
          get users_path
