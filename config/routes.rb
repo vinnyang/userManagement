@@ -1,5 +1,5 @@
 UserManagement::Application.routes.draw do
-  root :to => 'users#index' # change to sign in page later
+  root :to => 'sessions#new'
   resources :users do 
     post 'table_update' => 'users#update' #using the update action for modifying the table content
   end

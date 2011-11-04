@@ -18,7 +18,7 @@ describe "User" do
                 password_confirmation:'userpw'}
           
       @createdUser = User.create!(@user)
-    #@adminUser = 
+
     end
   
    describe "attributes" do
@@ -27,17 +27,18 @@ describe "User" do
         end
   
         it "should reject duplicated user" do
-          exsiting_user = User.new(@user).
+          duplicated_user = User.new(@user).
             should_not be_valid
         end
         
         it "should find the right user" do
-          get :show, :id => @createdUser.id
-          assigns(@createdUser).should eq(@createdUser)
+          get :show, :id => @createdUser.id 
+          assigns(:user).should == @createdUser
         end
    end
    
    describe "sign up" do
+     
       describe "failure" do
         
         it "should not be able to sign up" do
@@ -84,7 +85,7 @@ describe "User" do
             should_not be_valid
         end
    end
-  
+   
    describe "password" do
            it "should require a password" do
              User.new(@user.merge(password:"", password_confirmation:"")).
@@ -160,49 +161,74 @@ describe "User" do
      end 
   end
   
+  describe "sign in/out" # do
+# these test are commented-out since rspec the 'visit' method is not defined
+      describe "failure" # do
+      #         it "should not sign a user in" do
+      #           visit signin_path
+      #           fill_in :email,    :with => ""
+      #           fill_in :password, :with => ""
+      #           click_button
+      #           response.should have_selector("div.flash.error", :content => "Invalid")
+      #         end
+      #       end
+
+      describe "success" # do
+      #         it "should sign a user in and out" do
+      #           user = User.new(:user) 
+      #           visit signin_path
+      #           fill_in :email,    :with => user.email
+      #           fill_in :password, :with => user.password
+      #           click_button
+      #           controller.should be_signed_in
+      #           click_link "Sign out"
+      #           controller.should_not be_signed_in
+      #         end
+      #       end
+    # end
      
-   describe "paths" do 
+  describe "paths" do 
        
-       it "should have a signin path" do
-         get '/signin'
-         response.should be_success
-       end
-       
-       it "should have a signout path" do
-         get signout_path
-         response.should be_success
-       end
-       
-       it "should have a signup path" do
-         get signup_path
-         response.should be_success
-       end
-       
-       it "should have a path for the 'Index' action" do
-         # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-         get users_path
-         response.status.should be(200)
-       end
-   
-       it "should have the correct path for 'New' action" do
-         get new_user_path
-         response.should be_success
-       end
-   
-       it "should have the correct path for 'Edit' action" do
-         get edit_user_path(@createdUser)
-         response.should be_success
-       end
-   
-       it "should have the correct path for 'Show' action" do
-         get user_path(@createdUser)
-         response.should be_success
-       end
-       
-       it "should have the correct path for root" do
-         get root_path
-         response.should be_success
-       end
-    end
+     it "should have a signin path" do
+       get '/signin'
+       response.should be_success
+     end
+     
+     it "should have a signout path" do
+       get signout_path(@createdUser)
+       response.should be_success
+     end
+     
+     it "should have a signup path" do
+       get signup_path
+       response.should be_success
+     end
+     
+     it "should have a path for the 'Index' action" do
+       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+       get users_path
+       response.status.should be(200)
+     end
+ 
+     it "should have the correct path for 'New' action" do
+       get new_user_path
+       response.should be_success
+     end
+ 
+     it "should have the correct path for 'Edit' action" do
+       get edit_user_path(@createdUser)
+       response.should be_success
+     end
+ 
+     it "should have the correct path for 'Show' action" do
+       get user_path(@createdUser)
+       response.should be_success
+     end
+     
+     it "should have the correct path for root" do
+       get root_path
+       response.should be_success
+     end
+  end
 end
 # end
