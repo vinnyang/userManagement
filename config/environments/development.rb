@@ -27,4 +27,12 @@ UserManagement::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #this is for devise#
+  # Setup default url options for your specific environment. Here is an
+  # example of development environment:
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # This is a required Rails configuration. In production it must be the
+  # actual host of your application
+  
 end

@@ -1,4 +1,6 @@
 UserManagement::Application.routes.draw do
+  devise_for :users
+
   root :to => 'users#index' # change to sign in page later
   resources :users do 
     post 'table_update' => 'users#update' #using the update action for modifying the table content

@@ -16,7 +16,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'devise'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '3.0.0'
 
@@ -37,7 +37,7 @@ group :test do
   gem 'jquery-rails'
   gem "ZenTest", "4.4.2"
   gem "autotest-rails", "4.1.0"
-
+  gem 'devise'
 end
 
 group :development do
@@ -45,4 +45,5 @@ group :development do
   gem 'rspec-rails'
   gem "ZenTest", "4.4.2"
   gem "autotest-rails", "4.1.0"
+  gem 'devise'
 end
